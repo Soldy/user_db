@@ -1,0 +1,7 @@
+CREATE TABLE `user_nick_logs` (
+    `issuer` INT UNSIGNED NOT NULL,
+    `user` INT UNSIGNED NOT NULL,
+    `old` INT UNSIGNED NOT NULL,
+    `new` INT UNSIGNED NOT NULL,
+    `date` BIGINT UNSIGNED NOT NULL
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;;
