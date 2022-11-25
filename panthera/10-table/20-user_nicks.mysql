@@ -1,6 +1,6 @@
 CREATE TABLE `user_nicks` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-    `nick` VARCHAR(128) NOT NULL CHARACTER SET utf8,
+    `nick` VARCHAR(128) NOT NULL,
      UNIQUE KEY `id` (`id`),
      KEY `index` (`id`)
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;;

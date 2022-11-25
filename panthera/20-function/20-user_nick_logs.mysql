@@ -1,0 +1,23 @@
+CREATE OR REPLACE FUNCTION `user_nick_logAdd`(
+  IISSUER INT UNSIGNED,
+  IUSER INT UNSIGNED,
+  IOLD INT UNSIGNED,
+  INEW INT UNSIGNED,
+  IDATE INT UNSIGNED
+) RETURNS INT MODIFIES SQL DATA
+BEGIN
+    INSERT INTO `user_nick_logs`(
+        `user_nick_logs`.`issuer`,
+        `user_nick_logs`.`user`,
+        `user_nick_logs`.`old`,
+        `user_nick_logs`.`new`,
+        `user_nick_logs`.`date`
+      ) VALUES (
+        IISSUER,
+        IUSER,
+        IOLD,
+        INEW,
+        IDATE
+      );
+    RETURN (SELECT LAST_INSERT_ID());
+END;
