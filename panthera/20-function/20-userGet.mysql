@@ -1,0 +1,18 @@
+CREATE OR REPLACE FUNCTION `userCheck`(
+  IID INT CHARSET utf8
+) RETURNS INT MODIFIES SQL DATA
+BEGIN
+    DECLARE user_id INT UNSIGNED; 
+    SELECT `id`
+      INTO 
+        user_id 
+      FROM 
+        `users`
+       WHERE 
+           `users`.`nick` = INICK
+       LIMIT 1;
+    IF user_id IS NULL THEN 
+        RETURN FALSE;
+    END IF;
+    RETURN TRUE;
+END;

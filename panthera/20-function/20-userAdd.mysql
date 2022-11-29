@@ -1,0 +1,25 @@
+CREATE OR REPLACE FUNCTION `userAdd`(
+  INICK VARCHAR(128) CHARSET utf8
+) RETURNS INT MODIFIES SQL DATA
+BEGIN
+    DECLARE nick_id INT UNSIGNED; 
+    DECLARE user_id INT; 
+    SELECT `user_nickAdd`(INICK) INTO nick_id;
+    SELECT `id`
+      INTO 
+        user_id 
+      FROM 
+        `users`
+       WHERE 
+           `users`.`nick` = nick_is
+       LIMIT 1;
+    IF user_id IS NULL THEN 
+        INSERT INTO `users`(
+            `users`.`nick`
+          ) VALUES (
+            nick_id
+          );
+        RETURN (SELECT LAST_INSERT_ID());
+    END IF;
+    RETURN -1;
+END;

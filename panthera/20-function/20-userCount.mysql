@@ -1,0 +1,8 @@
+CREATE OR REPLACE FUNCTION `userCount`(
+) RETURNS INT 
+BEGIN
+    RETURN (SELECT COUNT(`id`)
+      FROM 
+        `users`
+    );
+END;

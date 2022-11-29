@@ -1,0 +1,12 @@
+CREATE OR REPLACE FUNCTION `userGetNick`(
+  IID INT CHARSET utf8
+) RETURNS INT
+BEGIN
+    RETURN (SELECT `nick`
+      FROM 
+        `users`
+       WHERE 
+           `users`.`id` = IID
+       LIMIT 1
+    );
+END;
