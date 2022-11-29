@@ -5,13 +5,11 @@ CREATE TABLE `user_logs` (
     `date` BIGINT UNSIGNED NOT NULL
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;;
 
-/*
-action
- 1. add
- 2. disable
- 4. enable
- 8. delete
- 16. restore
-*/
 
+#action
+# 1. add
+# 2. disable
+# 4. enable
+# 8. delete
+# 16. restore
 
