@@ -1,0 +1,15 @@
+ALTER TABLE `user_nick_logs`
+ADD CONSTRAINT `FK_user_nick_logs-issuer-users`
+FOREIGN KEY (issuer) REFERENCES users(id);
+
+ALTER TABLE `user_nick_logs`
+ADD CONSTRAINT `FK_user_nick_logs-user-users`
+FOREIGN KEY (user) REFERENCES users(id);
+
+ALTER TABLE `user_nick_logs`
+ADD CONSTRAINT `FK_user_nick_logs-old-user_nicks`
+FOREIGN KEY (old) REFERENCES user_nicks(id);
+
+ALTER TABLE `user_nick_logs`
+ADD CONSTRAINT `FK_user_nick_logs-new-user_nicks`
+FOREIGN KEY (new) REFERENCES user_nicks(id);

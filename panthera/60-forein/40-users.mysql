@@ -1,0 +1,3 @@
+ALTER TABLE `users`
+ADD CONSTRAINT `FK_users-user_nicks`
+FOREIGN KEY (nick) REFERENCES user_nicks(id);

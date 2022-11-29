@@ -1,0 +1,3 @@
+ALTER TABLE `user_deletes`
+ADD CONSTRAINT `FK_user_deletes-users`
+FOREIGN KEY (user) REFERENCES users(id);

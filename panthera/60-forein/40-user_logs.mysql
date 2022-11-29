@@ -1,0 +1,7 @@
+ALTER TABLE `user_logs`
+ADD CONSTRAINT `FK_user_logs-issuer-users`
+FOREIGN KEY (issuer) REFERENCES users(id);
+
+ALTER TABLE `user_logs`
+ADD CONSTRAINT `FK_user_logs-user-users`
+FOREIGN KEY (user) REFERENCES users(id);
