@@ -1,0 +1,7 @@
+ALTER TABLE `user_adds`
+ADD CONSTRAINT `FK_user_adds-users`
+FOREIGN KEY (user) REFERENCES users(id);
+
+ALTER TABLE `user_adds`
+ADD CONSTRAINT `FK_user_adds-users`
+FOREIGN KEY (issuer) REFERENCES users(id);

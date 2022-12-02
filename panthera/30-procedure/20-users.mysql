@@ -1,0 +1,13 @@
+CREATE OR REPLACE PROCEDURE users ()
+BEGIN
+    SELECT 
+      `users`.`id` AS `id`,  
+      `user_nicks`.`nick` AS `nick`,
+      `user_deletes`.`date` AS `deleted`,
+      `user_adds`.`date` AS `added_at`,
+      `user_adds`.`issuer` AS `issuer_id`
+    FROM `users`
+      LEFT JOIN `user_nicks` ON `users`.`nick` = `user_nicks`.`id`
+      LEFT JOIN `user_deletes` ON `users`.`id` = `user_deletes`.`user`
+      LEFT JOIN `user_adds` ON `users`.`id` = `user_adds`.`user`;
+END

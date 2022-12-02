@@ -1,10 +1,14 @@
 CREATE OR REPLACE FUNCTION `userGetNick`(
-  IID INT CHARSET utf8
-) RETURNS INT
+  IID INT UNSIGNED
+) RETURNS VARCHAR(128) CHARSET utf8
 BEGIN
-    RETURN (SELECT `nick`
+    RETURN (SELECT `user_nicks`.`nick` AS `nick`
       FROM 
         `users`
+       LEFT JOIN
+         `user_nicks`
+       ON
+         `users`.`nick` = `user_nicks`.`id`
        WHERE 
            `users`.`id` = IID
        LIMIT 1

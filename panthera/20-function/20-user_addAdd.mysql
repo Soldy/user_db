@@ -1,0 +1,20 @@
+CREATE OR REPLACE FUNCTION `user_addAdd`(
+  IISSUER INT UNSIGNED,
+  IUSER INT UNSIGNED,
+  IDATE BIGINT UNSIGNED,
+  ITYPE SMALLINT UNSIGNED
+) RETURNS INT MODIFIES SQL DATA
+BEGIN
+    INSERT INTO `user_adds`(
+        `user_adds`.`issuer`,
+        `user_adds`.`user`,
+        `user_adds`.`date`,
+        `user_adds`.`type`
+      ) VALUES (
+        IISSUER,
+        IUSER,
+        IDATE,
+        ITYPE
+      );
+    RETURN 1;
+END;

@@ -1,9 +1,13 @@
 CREATE OR REPLACE FUNCTION `userAdd`(
+  IISSUER INT UNSIGNED,
+  IDATE BIGINT UNSIGNED,
+  ITYPE SMALLINT UNSIGNED,
   INICK VARCHAR(128) CHARSET utf8
 ) RETURNS INT MODIFIES SQL DATA
 BEGIN
     DECLARE nick_id INT UNSIGNED; 
     DECLARE user_id INT; 
+    DECLARE add_result INT; 
     SELECT `user_nickAdd`(INICK) INTO nick_id;
     SELECT `id`
       INTO 
@@ -11,7 +15,7 @@ BEGIN
       FROM 
         `users`
        WHERE 
-           `users`.`nick` = nick_is
+           `users`.`nick` = nick_id
        LIMIT 1;
     IF user_id IS NULL THEN 
         INSERT INTO `users`(
@@ -19,7 +23,14 @@ BEGIN
           ) VALUES (
             nick_id
           );
-        RETURN (SELECT LAST_INSERT_ID());
+        SELECT LAST_INSERT_ID() INTO user_id;
+        SELECT `user_addAdd`(
+            IISSUER,
+            user_id,
+            IDATE,
+            ITYPE
+        ) INTO add_result;
+        RETURN user_id;
     END IF;
     RETURN -1;
 END;
