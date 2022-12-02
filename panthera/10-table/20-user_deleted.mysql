@@ -1,6 +1,8 @@
 CREATE TABLE `user_deletes` (
+    `issuer` INT UNSIGNED NOT NULL,
     `user` INT UNSIGNED NOT NULL,
     `date` BIGINT UNSIGNED NOT NULL,
+    `type` SMALLINT UNSIGNED NOT NULL,
      UNIQUE KEY `user` (`user`)
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;;
 
