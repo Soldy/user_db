@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE users (IN IOFFSET INT, IN ILIMIT INT)
+CREATE OR REPLACE PROCEDURE user (IN IID INT UNSIGNED)
 BEGIN
     SELECT 
       `users`.`id` AS `id`,  
@@ -13,6 +13,7 @@ BEGIN
       LEFT JOIN `user_adds` ON `users`.`id` = `user_adds`.`user`
       LEFT JOIN `users` AS `issuers` ON `user_adds`.`issuer` = `issuers`.`id`
       LEFT JOIN `user_nicks` AS `issuer_nicks` ON `issuers`.`nick` = `issuer_nicks`.`id`
+      WHERE `users`.`id` = IID
       ORDER BY `users`.`id` ASC
-      LIMIT IOFFSET,ILIMIT;
+      LIMIT 1;
 END

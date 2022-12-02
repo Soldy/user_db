@@ -1,6 +1,5 @@
 CREATE OR REPLACE FUNCTION `userAdd`(
   IISSUER INT UNSIGNED,
-  IDATE BIGINT UNSIGNED,
   ITYPE SMALLINT UNSIGNED,
   INICK VARCHAR(128) CHARSET utf8
 ) RETURNS INT MODIFIES SQL DATA
@@ -8,6 +7,8 @@ BEGIN
     DECLARE nick_id INT UNSIGNED; 
     DECLARE user_id INT; 
     DECLARE add_result INT; 
+    DECLARE time_stamp BIGINT;
+    SELECT UNIX_TIMESTAMP() INTO time_stamp;
     SELECT `user_nickAdd`(INICK) INTO nick_id;
     SELECT `id`
       INTO 
@@ -27,7 +28,7 @@ BEGIN
         SELECT `user_addAdd`(
             IISSUER,
             user_id,
-            IDATE,
+            time_stamp,
             ITYPE
         ) INTO add_result;
         RETURN user_id;
