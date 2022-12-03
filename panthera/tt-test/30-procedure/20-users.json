@@ -1,0 +1,13 @@
+{
+    "procedure":"users",
+    "params":[1,100],
+    "result":[{
+        "id":1,
+        "nick":"test_user",
+        "deleted_at":"NULL",
+        "deleted_by_id":"NULL",
+        "deleted_by_nick":"NULL",
+        "added_by_id":1,
+        "added_by_nick":"test_user"
+    }]
+}
