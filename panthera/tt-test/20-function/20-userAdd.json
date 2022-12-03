@@ -1,0 +1,7 @@
+{
+    "function":"userAdd",
+    "params":[1,1,"test_user"],
+    "result":[{
+        "userAdd(1,1,'test_user')":1
+    }]
+}
