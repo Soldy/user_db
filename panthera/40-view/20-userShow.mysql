@@ -1,0 +1,18 @@
+CREATE OR REPLACE VIEW userShow AS SELECT 
+      `users`.`id` AS `id`,  
+      `user_nicks`.`nick` AS `nick`,
+      `user_deletes`.`date` AS `deleted`,
+      `user_deletes`.`issuer` AS `deleted_by_id`,
+      `deleter_nicks`.`nick` AS `deleted_by_nick`,
+      `user_adds`.`date` AS `added_at`,
+      `user_adds`.`issuer` AS `added_by_id`,
+      `adder_nicks`.`nick` AS `added_by_nick`
+    FROM `users`
+      LEFT JOIN `user_nicks` ON `users`.`nick` = `user_nicks`.`id`
+      LEFT JOIN `user_deletes` ON `users`.`id` = `user_deletes`.`user`
+      LEFT JOIN `users` AS `deleters` ON `user_deletes`.`issuer` = `deleters`.`id`
+      LEFT JOIN `user_nicks` AS `deleter_nicks` ON `deleters`.`nick` = `deleter_nicks`.`id`
+      LEFT JOIN `user_adds` ON `users`.`id` = `user_adds`.`user`
+      LEFT JOIN `users` AS `adders` ON `user_adds`.`issuer` = `adders`.`id`
+      LEFT JOIN `user_nicks` AS `adder_nicks` ON `adders`.`nick` = `adder_nicks`.`id`
+      ORDER BY `users`.`id` ASC;
