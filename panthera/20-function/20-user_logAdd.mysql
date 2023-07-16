@@ -1,0 +1,18 @@
+CREATE OR REPLACE FUNCTION `userAdd`(
+  IISSUER INT UNSIGNED,
+  IACTION SMALLINT UNSIGNED
+) RETURNS BIGINT UNSIGNED MODIFIES SQL DATA
+BEGIN
+    DECLARE time_stamp BIGINT UNSIGNED;
+    SELECT UNIX_TIMESTAMP() INTO time_stamp;
+    INSERT INTO `user_logs`(
+        `user_logs`.`user`,
+        `user_logs`.`action`,
+        `user_logs`.`date`
+      ) VALUES (
+        IUSER,
+        IACTION,
+        time_stamp
+      );
+      return time_stamp;
+END;
